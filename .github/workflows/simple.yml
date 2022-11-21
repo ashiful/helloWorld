@@ -1,0 +1,14 @@
+name: Test shell commands
+
+on: [push]
+
+jobs:
+  run-shell-command:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Echo single
+        run: echo "Hello world"
+      - name: Echo multi
+        run: |
+          node -v 
+          npm -v
