@@ -4,7 +4,6 @@ on:
   schedule:
     - cron: "1 * * * *"
   push:
-  pull:
 
 jobs:
   run-github-actions:
