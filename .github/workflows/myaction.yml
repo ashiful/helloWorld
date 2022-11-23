@@ -1,25 +1,13 @@
 name: Test shell commands
 
 on:
-  schedule:
-    - cron: "1 * * * *"
-  push:
+  repository_dispatch:
 
 jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
-      - name: list github environment vars
+      - name: manual trigger print payload
         run: |
           # commit hash
-          echo $GITHUB_SHA
-          # repo e.g. kyos/kyos-laravel
-          echo $GITHUB_REPOSITORY
-          # dir
-          echo $GITHUB_WORKSPACE
-          # token but cannot be print ??
-          echo "${{ github.token }}"
-      - name: list dir
-        run: |
-          pwd
-          ls -la
+          echo "${{ github.event.client_payload }}"
