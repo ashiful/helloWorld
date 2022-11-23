@@ -8,12 +8,18 @@ jobs:
     steps:
       - name: list github environment vars
         run: |
+          # commit hash
           echo $GITHUB_SHA
+          # repo e.g. kyos/kyos-laravel
           echo $GITHUB_REPOSITORY
+          # dir
           echo $GITHUB_WORKSPACE
+          # token but cannot be print ??
           echo "${{ github.token }}"
       - name: our checkout
-        uses: actions/checkout@master
+        run: |
+          git clone $GITHUB_REPOSITORY
+          git checkout $GITHUB_SHA
       - name: list dir
         run: |
           pwd
