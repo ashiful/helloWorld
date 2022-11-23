@@ -1,6 +1,10 @@
 name: Test shell commands
 
-on: [push]
+on:
+  schedule:
+    - cron: "1 * * * *"
+  push:
+  pull:
 
 jobs:
   run-github-actions:
@@ -16,10 +20,6 @@ jobs:
           echo $GITHUB_WORKSPACE
           # token but cannot be print ??
           echo "${{ github.token }}"
-      - name: our checkout
-        run: |
-          git clone git@github.com:$GITHUB_REPOSITORY
-          git checkout $GITHUB_SHA
       - name: list dir
         run: |
           pwd
