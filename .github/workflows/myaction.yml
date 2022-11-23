@@ -18,7 +18,7 @@ jobs:
           echo "${{ github.token }}"
       - name: our checkout
         run: |
-          git clone $GITHUB_REPOSITORY
+          git clone git@github.com:$GITHUB_REPOSITORY
           git checkout $GITHUB_SHA
       - name: list dir
         run: |
