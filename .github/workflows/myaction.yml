@@ -6,7 +6,13 @@ jobs:
   run-github-actions:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: list github environment vars
+        run: |
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
+      - name: our checkout
         uses: actions/checkout@master
       - name: list dir
         run: |
