@@ -1,0 +1,14 @@
+name: Test shell commands
+
+on: [push]
+
+jobs:
+  run-github-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@master
+      - name: list dir
+        run: |
+          pwd
+          ls -la
