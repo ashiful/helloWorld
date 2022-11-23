@@ -2,6 +2,7 @@ name: Test shell commands
 
 on:
   repository_dispatch:
+    types: [build]
 
 jobs:
   run-github-actions:
