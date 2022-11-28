@@ -12,7 +12,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Print env
-        step_env: Step environment
+        env:
+          step_env: Step environment
         run: |
           echo "Workflow Env: ${wf_env}"
           echo "Workflow Env: ${jb_env}"
