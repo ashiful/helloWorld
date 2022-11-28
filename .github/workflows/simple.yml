@@ -3,6 +3,12 @@ name: Test shell commands
 on: [push]
 
 jobs:
+  run-our-env:
+    runs-on: ubuntu-latest
+    steps:
+      - name: First env
+        run: |
+          echo "1. Env: ${first_env}"
   run-shell-command:
     runs-on: ubuntu-latest
     steps:
