@@ -2,13 +2,13 @@ name: Test shell commands
 
 on: [push]
 
-env:
-  my_pass: ${{ secrets.mypassword }}
-
 jobs:
   run-our-env:
     runs-on: ubuntu-latest
     steps:
-      - name: Print env
+      - name: Auto commit
         run: |
-          echo "Workflow Env: ${my_pass}"
+          pwd
+          git init
+          git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
+          ls
