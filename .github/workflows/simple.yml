@@ -3,18 +3,12 @@ name: Test shell commands
 on: [push]
 
 env:
-  wf_env: Workflow environment
+  my_pass: ${{ secrets.mypassword }}
 
 jobs:
   run-our-env:
-    env:
-      jb_env: Job environment
     runs-on: ubuntu-latest
     steps:
       - name: Print env
-        env:
-          step_env: Step environment
         run: |
-          echo "Workflow Env: ${wf_env}"
-          echo "Workflow Env: ${jb_env}"
-          echo "Workflow Env: ${step_env}"
+          echo "Workflow Env: ${my_pass}"
