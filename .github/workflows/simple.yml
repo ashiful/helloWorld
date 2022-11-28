@@ -1,23 +1,12 @@
 name: Test shell commands
 
-on: [push]
+on: [push, pull_request]
 
 jobs:
-  run-our-env:
+  run-logic:
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
     steps:
       - name: Auto commit
         run: |
-          pwd
-          git init
-          git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
-          git config --global user.email "no@user.com"
-          git config --global user.name "$GITHUB_ACTOR"
-          git fetch 
-          git checkout $GITHUB_REF_NAME 
-          git branch --set-upstream-to=origin/master
-          git pull 
-          echo $RANDOM >> random.txt
-          git add -A
-          git commit -a -m "Auto commit by $GITHUB_ACTOR"
-          ls -a
+          echo "Push"
