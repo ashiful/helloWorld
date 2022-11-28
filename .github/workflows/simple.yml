@@ -3,21 +3,17 @@ name: Test shell commands
 on: [push]
 
 env:
-  first_env: This is a test
+  wf_env: Workflow environment
 
 jobs:
   run-our-env:
+    env:
+      jb_env: Job environment
     runs-on: ubuntu-latest
     steps:
-      - name: First env
+      - name: Print env
+        step_env: Step environment
         run: |
-          echo "1. Env: ${first_env}"
-  run-shell-command:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Echo single
-        run: echo "Hello world"
-      - name: Echo multi
-        run: |
-          node -v 
-          npm -v
+          echo "Workflow Env: ${wf_env}"
+          echo "Workflow Env: ${jb_env}"
+          echo "Workflow Env: ${step_env}"
