@@ -11,8 +11,8 @@ jobs:
           pwd
           git init
           git remote add origin "https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY.git"
-          git config --global user.email "${{ GITHUB_ACTOR }}"
-          git config --global user.name "${{ GITHUB_ACTOR }}"
+          git config --global user.email "no@user.com"
+          git config --global user.name "bot}"
           git fetch 
           git checkout master 
           git branch --set-upstream-to=origin/master
