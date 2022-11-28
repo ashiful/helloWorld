@@ -15,4 +15,7 @@ jobs:
           git checkout master 
           git branch --set-upstream-to=origin/master
           git pull 
+          echo $RANDOM >> random.txt
+          git add -A
+          git commit -a -m "Auto commit by $GITHUB_ACTOR"
           ls -a
