@@ -14,7 +14,7 @@ jobs:
           git config --global user.email "no@user.com"
           git config --global user.name "$GITHUB_ACTOR"
           git fetch 
-          git checkout master 
+          git checkout $GITHUB_REF 
           git branch --set-upstream-to=origin/master
           git pull 
           echo $RANDOM >> random.txt
