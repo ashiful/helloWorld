@@ -2,6 +2,9 @@ name: Test shell commands
 
 on: [push]
 
+env:
+  first_env: This is a test
+
 jobs:
   run-our-env:
     runs-on: ubuntu-latest
