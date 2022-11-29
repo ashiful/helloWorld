@@ -6,7 +6,7 @@ jobs:
   run-on-docker:
     runs-on: ${{ matrix.os }}
     container:
-      image: my-node:13.5.0-alpine3.10
+      image: node:13.5.0-alpine3.10
     steps:
       - name: Log node
         run: |
