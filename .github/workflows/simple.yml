@@ -9,10 +9,3 @@ jobs:
       - name: Current Node
         run: |
           node -v
-      - name: Install node v
-        uses: actions/setup-node@v1
-        with:
-          node-version: '6.x'
-      - name: After install node 6
-        run: |
-          node -v
