@@ -3,30 +3,12 @@ name: Test shell commands
 on: [push]
 
 jobs:
-  run-versions:
-    strategy:
-      matrix:
-        os: [macos-latest, ubuntu-latest, windows-latest]
-        our_node: [6, 7, 8]
-        exclude: # will not run for ubuntu-latest/node 6 & macos-latest/6
-          - os: ubuntu-latest
-            our_node: 6
-          - os: macos-latest
-            our_node: 6
-        include:
-          - os: ubuntu-latest
-            our_node: 8
-            latest_os: "true"
-      fail-fast: false # true default - fail on one
+  run-on-docker:
     runs-on: ${{ matrix.os }}
-    env:
-      IS_LATEST: ${{ matrix.latest_os }}
+    container:
+      image: my-node:13.5.0-alpine3.10
     steps:
-      - name: Install node v
-        uses: actions/setup-node@v1
-        with:
-          node-version: ${{ matrix.our_node }}
-      - name: After install node 6
+      - name: Log node
         run: |
           node -v
-          echo $IS_LATEST
+          cat /etc/os-release
