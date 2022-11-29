@@ -4,9 +4,9 @@ on: [push]
 
 jobs:
   run-on-docker:
-    runs-on: ${{ matrix.os }}
+    runs-on: ubuntu-latest
     container:
-      image: node:13.5.0-alpine3.10
+      image: node-o-node:13.5.0-alpine3.10
     steps:
       - name: Log node
         run: |
