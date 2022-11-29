@@ -4,8 +4,17 @@ on: [push]
 
 jobs:
   run-versions:
-    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        os: [macos-latest, ubuntu-latest, windows-lates]
+        our_node: [6, 7, 8]
+      fail-fast: false # true default - fail on one
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: Current Node
+      - name: Install node v
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.our_node }}
+      - name: After install node 6
         run: |
           node -v
