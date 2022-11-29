@@ -7,6 +7,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
+      - name: Will continue
+        continue-on-error: true
+        run: |
+          eccccho "Fail"
       - name: First step
         run: |
           echo "Push"
