@@ -8,16 +8,16 @@ jobs:
       matrix:
         os: [macos-latest, ubuntu-latest, windows-latest]
         our_node: [6, 7, 8]
+        exclude: # will not run for ubuntu-latest/node 6 & macos-latest/6
+          - os: ubuntu-latest
+            our_node: 6
+          - os: macos-latest
+            our_node: 6
+        include:
+          - os: ubuntu-latest
+            our_node: 8
+            latest_os: "true"
       fail-fast: false # true default - fail on one
-      exclude: # will not run for ubuntu-latest/node 6 & macos-latest/6
-        - os: ubuntu-latest
-          our_node: 6
-        - os: macos-latest
-          our_node: 6
-      include:
-        - os: ubuntu-latest
-          our_node: 8
-          latest_os: "true"
     runs-on: ${{ matrix.os }}
     env:
       IS_LATEST: ${{ matrix.latest_os }}
