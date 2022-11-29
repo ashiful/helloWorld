@@ -1,31 +1,18 @@
 name: Test shell commands
 
-on: [push, pull_request]
+on: [push]
 
 jobs:
-  run-logic:
+  run-versions:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
     steps:
-      - name: Will continue
-        continue-on-error: true
+      - name: Current Node
         run: |
-          eccccho "Fail"
-      - name: First step
+          node -v
+      - name: Install node v
+        uses: actions/setup-node@v1
+        with:
+          node-version: '6.x'
+      - name: After install node 6
         run: |
-          echo "Push"
-      - name: Second step failed
-        run: |
-          eccho "Push"
-      - name: Third step
-        if: success()
-        run: |
-          echo "No print"
-      - name: Forth step
-        if: failure()
-        run: |
-          echo "Forth step - something failed"
-      - name: Fifth step
-        if: always()
-        run: |
-          echo "Fifth step - I am always"
+          node -v
